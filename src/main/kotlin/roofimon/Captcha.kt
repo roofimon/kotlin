@@ -4,7 +4,7 @@ package roofimon
  * Created by roofimon on 4/7/2016 AD.
  */
 
-class Captcha(_pattern: Int, _left: Int, _operator: Int, _right: Int) {
+class Captcha(val _pattern: Int, val _left: Int, val _operator: Int, val _right: Int) {
     val left:Operand = createLeft(_pattern, _left)
     val right:Operand = createRight(_pattern, _right)
     val operator:Operator = Operator(_operator)
