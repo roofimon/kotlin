@@ -41,29 +41,21 @@ class TestCreateRight {
     }
 }
 
-class TestSomething {
-    @Test fun testOperatorPlus() {
+class TestCaptchaToString {
+    @Test fun firstPatternStringShouldBe1PlusONE() {
         val captcha = Captcha(1, 1, 1, 1)
-        assertEquals("+", captcha.operator.string())
+        assertEquals("1 + ONE", captcha.toString())
     }
-    @Test fun secondPatternLeftShouldBeONE() {
+    @Test fun secondPatternStringShouldBeONEPlus1() {
         val captcha = Captcha(2, 1, 1, 1)
-        assertEquals("ONE", captcha.left.string())
+        assertEquals("ONE + 1", captcha.toString())
     }
-    @Test fun firstPatternLeftShouldBe1() {
-        val captcha = Captcha(1, 1, 1, 1)
-        assertEquals("1", captcha.left.string())
+    @Test fun firstPatternStringShouldBe9MultiplyFOUR() {
+        val captcha = Captcha(1, 9, 2, 4)
+        assertEquals("9 * FOUR", captcha.toString())
     }
-    @Test fun firstPatternLeftShouldBe2() {
-        val captcha = Captcha(1, 9, 1, 1)
-        assertEquals("9", captcha.left.string())
-    }
-    @Test fun firstPatternRightShouldBeONE() {
-        val captcha = Captcha(1, 1, 1, 1)
-        assertEquals("ONE", captcha.right.string())
-    }
-    @Test fun firstPatternRightShouldBeNINE() {
-        val captcha = Captcha(1, 1, 1, 9)
-        assertEquals("NINE", captcha.right.string())
+    @Test fun secondPatternStringShouldBENineMinus1() {
+        val captcha = Captcha(2, 9, 3, 1)
+        assertEquals("NINE - 1", captcha.toString())
     }
 }

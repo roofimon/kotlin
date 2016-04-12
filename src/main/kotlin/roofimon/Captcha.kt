@@ -8,6 +8,10 @@ class Captcha(val _pattern: Int, val _left: Int, val _operator: Int, val _right:
     val left:Operand = createLeft(_pattern, _left)
     val right:Operand = createRight(_pattern, _right)
     val operator:Operator = Operator(_operator)
+
+    override fun toString(): String {
+        return "${left.string()} ${operator.string()} ${right.string()}"
+    }
 }
 
 fun createLeft(pattern: Int, value: Int): Operand {
