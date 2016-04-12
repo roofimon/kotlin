@@ -4,9 +4,11 @@ package roofimon
  * Created by roofimon on 4/7/2016 AD.
  */
 
+enum class Position { LEFT, RIGHT }
+
 class Captcha(val _pattern: Int, val _left: Int, val _operator: Int, val _right: Int) {
-    val left:Operand = createLeft(_pattern, _left)
-    val right:Operand = createRight(_pattern, _right)
+    val left:Operand = createOperand(_pattern, _left, Position.LEFT)
+    val right:Operand = createOperand(_pattern, _right, Position.RIGHT)
     val operator:Operator = Operator(_operator)
 
     override fun toString(): String {
@@ -14,17 +16,12 @@ class Captcha(val _pattern: Int, val _left: Int, val _operator: Int, val _right:
     }
 }
 
-fun createLeft(pattern: Int, value: Int): Operand {
+fun createOperand(pattern: Int, value: Int, position: Position): Operand {
+    val integerPattern = if(position == Position.LEFT) 1 else 2
     when(pattern) {
-        1 -> return IntegerOperand(value)
+        integerPattern -> return IntegerOperand(value)
         else -> return StringOperand(value)
     }
-}
-
-fun createRight(pattern: Int, value: Int): Operand {
-    if(pattern == 1)
-        return StringOperand(value)
-    return IntegerOperand(value)
 }
 
 abstract class Operand(_value: Int) {

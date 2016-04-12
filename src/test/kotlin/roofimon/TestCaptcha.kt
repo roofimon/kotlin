@@ -24,20 +24,19 @@ class TestStringOperand {
         assertEquals("NINE", stringOperand.string())
     }
 }
-class TestCreateLeft {
+class TestCreateOperand {
     @Test fun testFirstPatternLeftShouldBeIntegerOperand() {
-        assertTrue(createLeft(1, 1) is IntegerOperand)
+        assertTrue(createOperand(1, 1, Position.LEFT) is IntegerOperand)
     }
     @Test fun testSecondPatternLeftShouldBeStringOperand() {
-        assertTrue(createLeft(2, 1) is StringOperand)
+        assertTrue(createOperand(2, 1, Position.LEFT) is StringOperand)
     }
-}
-class TestCreateRight {
+
     @Test fun testFirstPatternLeftShouldBeStringOperand() {
-        assertTrue(createRight(1, 1) is StringOperand)
+        assertTrue(createOperand(1, 1, Position.RIGHT) is StringOperand)
     }
     @Test fun testSecondPatternRightShouldBeIntegerOperand() {
-        assertTrue(createRight(2, 2) is IntegerOperand)
+        assertTrue(createOperand(2, 2, Position.RIGHT) is IntegerOperand)
     }
 }
 
