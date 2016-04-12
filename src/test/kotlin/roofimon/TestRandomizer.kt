@@ -1,9 +1,6 @@
 package roofimon
 
-import com.nhaarman.mockito_kotlin.atLeastOnce
-import com.nhaarman.mockito_kotlin.doReturn
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.*
 import org.junit.Test
 import java.util.*
 import kotlin.test.assertEquals
@@ -33,19 +30,19 @@ class TestRandomizer {
         doReturn(2).`when`(stubRandom).nextInt()
         val randomizer = Randomizer(stubRandom)
         assertEquals(2, randomizer.randomPattern())
-        verify(stubRandom, atLeastOnce()).setSeed(2)
+        verify(stubRandom, atMost(1)).setSeed(2)
     }
     @Test fun testRandomOperand() {
         doReturn(9).`when`(stubRandom).nextInt()
         val randomizer = Randomizer(stubRandom)
         assertEquals(9, randomizer.randomOperand())
-        verify(stubRandom, atLeastOnce()).setSeed(9)
+        verify(stubRandom, atMost(1)).setSeed(9)
     }
 
     @Test fun testRandomOperator() {
         doReturn(1).`when`(stubRandom).nextInt()
         val randomizer = Randomizer(stubRandom)
         assertEquals(1, randomizer.randomOperator())
-        verify(stubRandom, atLeastOnce()).setSeed(3)
+        verify(stubRandom, atMost(1)).setSeed(3)
     }
 }
